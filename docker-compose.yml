@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_node
+    ports: 
+      - "5672:5672"
+      - "15672:15672"
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/users
+    depends_on:
+      - mongo
+    command: ["node", "index.js"]
+    
+  task-service:
+    build: ./task-service
+    container_name: task-service
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/tasks
+    depends_on:
+      - mongo
+      - rabbitmq
+    command: ["node", "index.js"]
+
+  notification-service:
+    build: ./notification-service
+    container_name: notification-service
+    ports:
+      - "3002:3002"
+    depends_on:
+      - mongo
+      - rabbitmq
+volumes:
+  mongo-data:
