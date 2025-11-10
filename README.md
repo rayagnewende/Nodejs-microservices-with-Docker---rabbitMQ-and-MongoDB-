@@ -58,8 +58,7 @@ All MongoDB databases
 
 RabbitMQ server & management UI (accessible on :15672)
 
-### **Author**
-
-### **Your**: R KABORE**
-*LinkedIhttps://www.linkedin.com/in/yourprofile](https://www.linkedin.com/in/kaborerayagnewendeevariste/)*
-## *GitHub: https://github.com/rayagnewende*
+## Author
+## Your : R KABORE**
+# LinkedIhttps://www.linkedin.com/in/yourprofile](https://www.linkedin.com/in/kaborerayagnewendeevariste/)
+## GitHub: https://github.com/rayagnewende*
